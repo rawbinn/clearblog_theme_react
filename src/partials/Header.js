@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Header() {
+export default function Header({header}) {
     return (
         <header className="masthead">
             <div className="overlay"></div>

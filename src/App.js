@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Navbar from './components/partials/Navbar';
-import Footer from './components/partials/Footer';
-import Header from './components/partials/Header';
+import Navbar from './partials/Navbar';
+import Footer from './partials/Footer';
+import Header from './partials/Header';
 import Routes from './Routes';
 import {
   BrowserRouter as Router,
