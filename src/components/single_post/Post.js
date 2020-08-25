@@ -9,25 +9,27 @@ const Post = () => {
     let { id } = useParams();
 
     const getPost = async () => {
-        const response = await axios.get('http://larapress.seshra.com/api/post?post_id='+id);
+        const response = await axios.get('http://larapress.seshra.com/api/post?post_id=' + id);
         setPost(response.data.data);
         setLoading(false)
     };
     useEffect(() => {
         getPost();
     }, []);
-    if(loading) {
+
+    if (loading) {
         return (
             <Loading />
         )
     }
-    else{
+    else {
+        function createMarkup() {
+            return {
+                __html: post.content
+            };
+        };
         return (
-            <div>
-                {post &&
-                    post.content
-                }
-            </div>
+            <div dangerouslySetInnerHTML={createMarkup()} />
         )
     }
 }
