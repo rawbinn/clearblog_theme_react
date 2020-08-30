@@ -1,5 +1,4 @@
 import React from 'react';
-import Post from '../components/home/PostList';
 import PostList from '../components/home/PostList';
 const Home = () => {
     return (
