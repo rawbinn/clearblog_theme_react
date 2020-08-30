@@ -23,13 +23,13 @@ const SinglePost = () => {
     return (
         <div>
         <Header>
-            {!loading && <HeaderTitle header={post} key={post.id}/> }
+            {!loading && <HeaderTitle header={post}/> }
         </Header>
         <article>
             <div className="container">
             <div className="row">
                 <div className="col-lg-8 col-md-10 mx-auto">
-                    {loading ? <Loading /> :  <Post post={post} key={post.id}/> }
+                    {loading ? <Loading /> :  <Post post={post}/> }
                 </div>
             </div>
             </div>
