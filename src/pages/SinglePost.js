@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Loading from '../partials/loading/Loading';
 import HeaderTitle from '../partials/HeaderTitle';
+import Header from '../partials/Header';
 
 const SinglePost = () => {
     const [post, setPost] = useState({});
@@ -21,18 +22,9 @@ const SinglePost = () => {
 
     return (
         <div>
-        <header className="masthead">
-            <div className="overlay"></div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-8 col-md-10 mx-auto">
-                        <div className="site-heading">
-                            {!loading && <HeaderTitle header={post} key={post.id}/> }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+        <Header>
+            {!loading && <HeaderTitle header={post} key={post.id}/> }
+        </Header>
         <article>
             <div className="container">
             <div className="row">
