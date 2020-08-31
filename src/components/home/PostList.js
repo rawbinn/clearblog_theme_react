@@ -14,7 +14,7 @@ const PostList = () => {
     const [currentPage,setCurrentPage] = useState(1);
 
     const getPosts = async () => {
-        const response = await axios.get('http://larapress.seshra.com/api/posts?limit='+pageLimit+'&page='+currentPage)
+        await axios.get('http://larapress.seshra.com/api/posts?limit='+pageLimit+'&page='+currentPage)
         .then(response => {
             if(response.data.status) {
                 setTotalRecords(response.data.data.totalRecords);
@@ -26,7 +26,7 @@ const PostList = () => {
         })  
         .catch(error => {   
             setPosts({})  
-            setError('Something went wrong') 
+            setError('Something went wrong'+error) 
         });
         setLoading(false) ;
     };
@@ -51,24 +51,24 @@ const PostList = () => {
         return (
             <div>
                 {posts && posts.map(post => (
-                    <div>
-                        <div class="post-preview">
+                    <div key={post.id}>
+                        <div className="post-preview">
                         <a href={"/post/"+post.id}>
-                            <h2 class="post-title">
+                            <h2 className="post-title">
                             {post.title}
                             </h2>
-                            <h3 class="post-subtitle">
+                            <h3 className="post-subtitle">
                             {post.content}
                             </h3>
                         </a>
-                        <p class="post-meta">Posted by 
+                        <p className="post-meta">Posted by 
                             <a href="#">{post.author.name}</a> 
                             on {post.post_date}</p>
                         </div>
                         <hr />
                     </div>
                 ))}
-                <div class="clearfix">
+                <div className="clearfix">
                          <Pagination
                 totalRecords={totalRecords}
                 pageLimit={pageLimit}

@@ -9,9 +9,9 @@ const Home = () => {
         <Header>
            <HeaderTitle header={post}/>
         </Header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-8 col-md-10 mx-auto">
                     <PostList />
                 </div>
             </div>

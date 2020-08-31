@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import Post from '../components/single_post/Post';
-import axios from 'axios';
 import { useParams } from "react-router-dom";
-import Loading from '../partials/loading/Loading';
-import HeaderTitle from '../partials/HeaderTitle';
+import Post from '../components/single_post/Post';
 import Header from '../partials/Header';
+import HeaderTitle from '../partials/HeaderTitle';
+import axios from 'axios';
+import Loading from '../partials/loading/Loading';
 
-const SinglePost = () => {
+const Page = () => {
+    let { slug } = useParams();
     const [post, setPost] = useState({});
+    const [type, setType] = useState('post');
     const [loading, setLoading] = useState(true);
-    let { id } = useParams();
 
-    
     useEffect(() => {
         const getPost = async () => {
-            const response = await axios.get('http://larapress.seshra.com/api/post?post_id=' + id);
+            const response = await axios.get('http://larapress.seshra.com/api/post?slug=' + slug);
+            setType(response.data.type);
             setPost(response.data.data);
             setLoading(false)
         };
@@ -39,4 +40,4 @@ const SinglePost = () => {
     )
 }
 
-export default SinglePost
+export default Page
